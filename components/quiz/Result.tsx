@@ -35,7 +35,6 @@ const Result = ({className}:{className?:string}) => {
     </div>
 
     <div className="flex flex-col gap-2 mt-5 mb-7">
-      <span className="block mx-auto text-gray-500">Peformance</span>
       <div className="grid grid-cols-3 gap-3">
         <div className="flexCenter flex-col bg-light px-3 py-1 rounded-[12px]">
           <span className="text-sm">Wrong answers</span>

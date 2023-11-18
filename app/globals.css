@@ -18,3 +18,37 @@ body {
 .flexColumn{
   @apply flex flex-col justify-center items-center
 }
+
+.expand-container {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 1s ease-in-out;
+}
+.expand-container.expanded {
+  max-height: 500px;
+}
+.shrink-container{
+  height: 0;
+}
+.bg-transition {
+   transition: background-color 0.3s ease-in-out;
+}
+
+@keyframes right-left {
+  from {transform: translateX(100%);}
+  to {transform: translateX(0);}
+}
+@keyframes left-right {
+  from {transform: translateX(-100%);}
+  to {transform: translateX(0);}
+}
+
+.right-to-left {
+  animation-name: right-left;
+  animation-duration: 1s;
+}
+
+.left-to-right {
+  animation-name: left-right;
+  animation-duration: 1s;
+}
