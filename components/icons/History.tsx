@@ -2,7 +2,7 @@
 const History = ({size=48,className}:{size?:number,className?:string}) => {
   return (
   <svg width={size} height={size} className={className} viewBox="0 0 245 201" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path fill-rule="evenodd" clip-rule="evenodd" d="M122.49 0.067211V0L122.402 0.0336055L122.311 0V0.067211L5.90137 43.9382V49.9299H122.311H122.49H238.903V43.9382L122.49 0.067211Z" fill="#707070"/>
+<path fillRule="evenodd" clipRule="evenodd" d="M122.49 0.067211V0L122.402 0.0336055L122.311 0V0.067211L5.90137 43.9382V49.9299H122.311H122.49H238.903V43.9382L122.49 0.067211Z" fill="#707070"/>
 <path d="M238.45 49.9871H6.34863V64.4236H238.45V49.9871Z" fill="#8C8C8C"/>
 <path d="M51.2873 76.249H28.2715V162.045H51.2873V76.249Z" fill="#C9C9C9"/>
 <path d="M53.3001 72.9426H26.2617V78.7025H53.3001V72.9426Z" fill="#939393"/>

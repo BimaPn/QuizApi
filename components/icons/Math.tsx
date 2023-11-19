@@ -25,8 +25,8 @@ const Math = ({size=48,className}:{size?:number,className?:string}) => {
 <path d="M164.934 184.6C162.32 184.6 160.2 186.719 160.2 189.333V198.8H164.934H169.667V189.333C169.667 186.719 167.547 184.6 164.934 184.6Z" fill="#E8A664"/>
 </g>
 <defs>
-<filter id="filter0_d_6_83" x="0" y="0" width="221" height="206.8" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<filter id="filter0_d_6_83" x="0" y="0" width="221" height="206.8" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+<feFlood floodOpacity="0" result="BackgroundImageFix"/>
 <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
 <feOffset dy="4"/>
 <feGaussianBlur stdDeviation="2"/>
