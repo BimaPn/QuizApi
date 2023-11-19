@@ -4,6 +4,7 @@ import { useState,useContext } from "react"
 import { HiOutlineArrowNarrowRight } from "react-icons/hi"
 import { quizContext } from "../providers/QuizProvider"
 import ProgressBar from "../ProgressBar"
+import ButtonPrimary from "../ui/ButtonPrimary"
 
 const Slide = ({question,media,answers,solution,className}:QuizSlide & {className?:string}) => {
   const options = ["a","b","c","d"];
@@ -80,11 +81,11 @@ const Slide = ({question,media,answers,solution,className}:QuizSlide & {classNam
             ))}
             
             {showSolution && (
-              <div className="w-[60%] flexCenter mt-2">
-                <button onClick={nextQuestion} className="w-fit flexCenter gap-2 bg-primary text-white px-4 py-2 rounded-[10px] mt-2">  
+              <div className="w-[60%] flexCenter mt-4">
+                <ButtonPrimary onClick={nextQuestion} className="w-fit flexCenter gap-2">
                   <span className="font-bold leading-6">Next</span>
                   <HiOutlineArrowNarrowRight className="text-xl" />
-                </button> 
+                </ButtonPrimary>
               </div>
             )}
 
