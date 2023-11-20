@@ -12,10 +12,10 @@ const config: Config = {
     extend: {
         colors : {
           primary : '#6B8AFD',
-          dark : '#3B3B3B',
-          semiDark : '#787878',
-          netral : '#8C8C8C',
-          semiLight : '#80DED9',
+          dark : '#07BEB8',
+          semiDark : '#3DCCC7',
+          netral : '#68D8D6',
+          semiLight : '#9CEAEF',
           light : '#EFF3F9',
           error : '#FF0033',
           success : '#5CB85C'
