@@ -8,7 +8,7 @@ import Entertainment from "@/components/icons/Entertainment";
 import Sport from "@/components/icons/Sport";
 import Science from "@/components/icons/Science";
 import { categories } from "@/contants/categories";
-import QuizzesSlider from "@/components/QuizzesSlider";
+import QuizzesSlider from "@/components/ui/QuizzesSlider";
 import { quizzes } from "@/contants/dumpQuizItem";
 import Categories from "@/components/home/Categories";
 const page = () => {

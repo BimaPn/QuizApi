@@ -1,5 +1,5 @@
-import Navbar from "@/components/Navbar"
-import Footer from "@/components/Footer"
+import Navbar from "@/components/ui/Navbar"
+import Footer from "@/components/ui/Footer"
 
 export default function RootLayout({
   children,
@@ -8,7 +8,7 @@ export default function RootLayout({
 }) {
   return (
   <>
-  <header className="sticky top-0">
+  <header className="sticky top-0 z-[999]">
     <Navbar /> 
   </header>
 

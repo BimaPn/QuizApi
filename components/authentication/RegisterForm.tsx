@@ -60,7 +60,7 @@ const RegisterForm = () => {
         onChange={(e) => setFormData({...formData,password:e.target.value})}
         className="!py-[6px] mb-1"
         required
-        placeholder="Your Name"/>
+        placeholder="Password"/>
         <InputError message={errors?.password && errors.password[0]} />
       </div>
       <div>
@@ -70,7 +70,7 @@ const RegisterForm = () => {
         onChange={(e) => setFormData({...formData,password_confirmation:e.target.value})}
         className="!py-[6px] mb-1"
         required
-        placeholder="Your Name"/>
+        placeholder="Confirm password"/>
       </div>
       
       <ButtonPrimary type="submit" className="mt-2">Register</ButtonPrimary>
