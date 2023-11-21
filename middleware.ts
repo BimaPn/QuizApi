@@ -7,13 +7,10 @@ export default async function middleware(req: NextRequest, event: NextFetchEvent
   const isAuthenticated = !!token;
 
   if ((req.nextUrl.pathname.startsWith('/login') || req.nextUrl.pathname.startsWith('/register')) && isAuthenticated) {
-    return NextResponse.redirect(new URL('/home', req.url));
+    return NextResponse.redirect(new URL("/login", req.url));
   }
   if (req.nextUrl.pathname.startsWith('/register') && !isAuthenticated) {
     return NextResponse.next();
-  }
-  if (req.nextUrl.pathname.startsWith('/')) {
-    return NextResponse.redirect(new URL('/home', req.url));
   }
 
   const authMiddleware = await withAuth({
