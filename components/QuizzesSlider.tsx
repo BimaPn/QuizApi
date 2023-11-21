@@ -1,6 +1,7 @@
 import QuizItem from "./cards/QuizItem"
+import QuizItemSkeleton from "./skeletons/QuizItemSkeleton"
 
-const QuizzesSlider = ({title,quizzes}:{title:string,quizzes:QuizPreview[]}) => {
+const QuizzesSlider = ({title,isLoading,quizzes}:{title:string,isLoading:boolean ,quizzes?:QuizPreview[]}) => {
   return (
   <section>
     <div className="flex flex-col gap-4 mt-12">
@@ -10,9 +11,15 @@ const QuizzesSlider = ({title,quizzes}:{title:string,quizzes:QuizPreview[]}) => 
       </span>
       </div>
       <div className="text-gray-700 grid grid-cols-5 gap-4">
-      {quizzes.map((item,index) => (
-        <QuizItem key={index} media={item.media} title={item.title} level={item.level}/>
-      ))}
+      {isLoading && <QuizItemSkeleton count={5} />}
+
+      {quizzes?.length !== 0 && (
+        <>
+          {quizzes?.map((item:QuizPreview) => (
+          <QuizItem key={item.id as string } media={item.media} title={item.title} level={item.level}/>
+        ))}
+        </>
+      )}
       </div>
     </div>
   </section>

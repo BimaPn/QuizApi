@@ -22,7 +22,7 @@ const RegisterForm = () => {
     const formSubmit =  (e:React.FormEvent<EventTarget>) => {
       e.preventDefault()
 
-      axios.post(`http://127.0.0.1:8000/api/auth/register`,formData)
+      axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/auth/register`,formData)
       .then(() => {
         router.push("/login");      
       })

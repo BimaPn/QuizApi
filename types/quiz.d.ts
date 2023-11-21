@@ -1,4 +1,5 @@
 interface QuizPreview {
+  id ?: string,
   media : string,
   title : string,
   level : string,

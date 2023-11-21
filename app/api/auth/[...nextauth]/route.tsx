@@ -16,7 +16,7 @@ export const authOptions : NextAuthOptions = {
                     throw new Error("password min 8 character");
                 }
 
-                const res = axios.post(`${process.env.NEXT_PUBLIC_DATABASE_URL}/api/auth/login`,
+                const res = axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/auth/login`,
                 {email : credentials?.email,password : credentials?.password})
                 const error = await res.catch(() => "true");
                 if(error == "true"){

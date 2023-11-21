@@ -1,26 +1,20 @@
-"use client"
-
-import { useState } from "react"
-import Image from "next/image";
 import HeroSection from "@/components/home/HeroSection";
-import QuizItem from "@/components/cards/QuizItem";
-import Entertainment from "@/components/icons/Entertainment";
-import Sport from "@/components/icons/Sport";
-import Science from "@/components/icons/Science";
-import { categories } from "@/contants/categories";
 import QuizzesSlider from "@/components/ui/QuizzesSlider";
-import { quizzes } from "@/contants/dumpQuizItem";
 import Categories from "@/components/home/Categories";
+import Entertainments from "@/components/home/Entertainments";
+import Science from "@/components/home/Entertainments";
+import Mathematics from "@/components/home/Entertainments";
+import Sports from "@/components/home/Entertainments";
+
 const page = () => {
-  const [count,setCount] = useState([new Date()]);
   return (
   <>
-  <HeroSection />
-  <Categories />
-  <QuizzesSlider title="Entertainment" quizzes={quizzes} />
-  <QuizzesSlider title="Science" quizzes={quizzes} />
-  <QuizzesSlider title="Sport" quizzes={quizzes} />
-  <QuizzesSlider title="Mathematics" quizzes={quizzes} />
+    <HeroSection />
+    <Categories />
+    <Entertainments />
+    <Science />
+    <Sports />
+    <Mathematics />
   </>
   )
 }
