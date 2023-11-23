@@ -12,6 +12,9 @@ export default async function middleware(req: NextRequest, event: NextFetchEvent
   if (req.nextUrl.pathname.startsWith('/register') && !isAuthenticated) {
     return NextResponse.next();
   }
+  if (req.nextUrl.pathname.startsWith('/home') && !isAuthenticated) {
+    return NextResponse.next();
+  }
 
   const authMiddleware = await withAuth({
     pages: {

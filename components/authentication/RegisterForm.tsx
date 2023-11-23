@@ -21,7 +21,7 @@ const RegisterForm = () => {
 
     const formSubmit =  (e:React.FormEvent<EventTarget>) => {
       e.preventDefault()
-
+  alert("ngirim")
       axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/auth/register`,formData)
       .then(() => {
         router.push("/login");      
