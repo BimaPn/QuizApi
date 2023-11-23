@@ -1,12 +1,17 @@
 import AddQuestionProvider from "@/components/providers/AddQuestionProvider"
 import FormAddQuiz from "@/components/quiz/FormAddQuiz"
+import QuestionCreateSubmit from "@/components/quiz/headers/QuestionCreateSubmit"
 import QuizCreateSubmit from "@/components/quiz/headers/QuizCreateSubmit"
 
-const page = () => {
+type Props = {
+  params:{id:string}
+}
+
+const page = ({params}:Props) => {
   return (
   <AddQuestionProvider>
     <FormAddQuiz>
-      <QuizCreateSubmit /> 
+      <QuestionCreateSubmit quizId={params.id} /> 
     </FormAddQuiz>
    </AddQuestionProvider>
   )

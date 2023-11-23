@@ -1,35 +1,37 @@
 "use client"
-import ApiClient from "@/app/api/axios/ApiClient";
 import { createContext, useState } from "react";
 
 export const addQuestionContext = createContext<QuestionProvider | null>(null);
 
-const AddQuestionProvider = ({children}:{children:React.ReactNode}) => {
-  const [formData,setFormData] = useState<AddQuestion>({
-    question : {
-      content : "",
-      media : null,
-    },
-    answers : [
-    {
-      content : "",
-      isCorrect : true,
-    },
-    {
-      content : "",
-      isCorrect : false,
-    },
-    {
-      content : "",
-      isCorrect : false,
-    },
-    {
-      content : "",
-      isCorrect : false,
-    },
-    ],
-    solution : "",
-  });
+const AddQuestionProvider = ({children,defaultValue}:{children:React.ReactNode,defaultValue?:AddQuestion}) => {
+  const [formData,setFormData] = useState<AddQuestion>(() => {
+        if(defaultValue) return defaultValue;
+        return {
+          question : {
+            content : "",
+            media : null,
+          },
+          answers : [
+          {
+            content : "",
+            isCorrect : true,
+          },
+          {
+            content : "",
+            isCorrect : false,
+          },
+          {
+            content : "",
+            isCorrect : false,
+          },
+          {
+            content : "",
+            isCorrect : false,
+          },
+          ],
+          solution : "",
+        }
+      });
 
   const setQuestion = (content:string) => {
     setFormData({...formData,question:{...formData.question,content}});

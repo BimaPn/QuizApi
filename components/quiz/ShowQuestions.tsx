@@ -13,10 +13,11 @@ const ShowQuestions = ({quizId,className}:{quizId:string,className?:string}) => 
     .then((res) => {
       setQuestios(res.data.questions);
       setIsLoading(false);
+      console.log(res.data.questions)
     })
     .catch((err) => {
       alert("error")
-      throw Error(err.response.data.message);
+      console.log(err.response.data)
     });
   },[]);
   return (

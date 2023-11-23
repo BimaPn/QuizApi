@@ -11,7 +11,7 @@ import Image from "next/image"
 import axios from "axios"
 import { useRouter } from "next/navigation"
 
-const FormAddQuiz = () => {
+const FormAddQuiz = ({children}:{children:React.ReactNode}) => {
   const { 
     formData,setQuestion,
     setMedia,setAnswer,setSolution
@@ -19,7 +19,7 @@ const FormAddQuiz = () => {
 
   return (
   <>
-  <Header formData={formData} />
+  {children}
   <section className="flex justify-center mt-6">
     <div className="grid grid-cols-2 gap-6">
       <Media onChange={(file) => setMedia(file)} />
@@ -67,34 +67,6 @@ const FormAddQuiz = () => {
     </div>
   </section>
   </>
-  )
-}
-
-const Header = ({formData}:{formData:AddQuestion}) => {
-  const router = useRouter();
-
-  const submit = (e:React.MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault();
-    axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/quizzes/create`,formData,{
-      headers: { "Content-Type" : "multipart/form-data" }
-      })
-    .then(res => {
-      router.push(`/quiz/edit/${res.data.quiz_id}`);      
-    })
-    .catch(err => {
-      alert("error");
-      console.log(err.response)
-      })
-  }
-  return (
-  <header className="sticky top-0 z-[999]">
-    <TopBar>
-      <ButtonPrimary onClick={submit} className="w-fit flexCenter gap-1 !pl-2 !pr-3 !py-2 text-sm">
-        <MdSave className="text-lg" />
-        <span className="font-bold">Publish</span> 
-      </ButtonPrimary>
-    </TopBar>
-  </header>
   )
 }
 

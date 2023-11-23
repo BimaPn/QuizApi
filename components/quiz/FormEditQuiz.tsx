@@ -38,12 +38,12 @@ const FormEditQuiz = ({quiz}:{quiz:QuizEdit}) => {
   return (
     <form onSubmit={submit} className="pb-10">
 
-      <Header>
+      <TopBar>
         <ButtonPrimary type="submit" className="w-fit flexCenter gap-1 !pl-2 !pr-3 !py-2 text-sm">
           <MdSave className="text-lg" />
           <span className="font-bold">Publish</span> 
         </ButtonPrimary>
-      </Header> 
+      </TopBar> 
 
       <section className="w-[1440px] flex items-start justify-center gap-10 relative mx-auto mt-6">
         <Questions quizId={quiz.id as string} />
@@ -100,22 +100,12 @@ const FormEditQuiz = ({quiz}:{quiz:QuizEdit}) => {
   )
 }
 
-const Header = ({children}:{children:React.ReactNode}) => {
-  return (
-    <header className="sticky top-0 z-[999]">
-      <TopBar>
-        {children}
-      </TopBar>
-    </header>
-  )
-}
-
 const Questions = ({quizId}:{quizId:string}) => {
   return (
     <div className="flex flex-col justify-start gap-6">
       <ShowQuestions quizId={quizId} />
       <div>
-        <Link href={`/create`} className="w-fit flexCenter bg-blue-300 pl-1 pr-3 py-[7px] rounded-[10px] text-white text-xs mx-auto">
+        <Link href={`/quiz/${quizId}/question/add`} className="w-fit flexCenter bg-blue-300 pl-1 pr-3 py-[7px] rounded-[10px] text-white text-xs mx-auto">
           <MdAdd className="text-lg" />
           <span className="font-bold">Add question</span> 
         </Link>
