@@ -43,3 +43,12 @@ interface QuizResult {
   className?:string
 }
 
+interface QuizEdit {
+  id ?: string,
+  title : string,
+  description : string,
+  media : File | string | null,
+  category_id ?:number,
+  level_id : number
+}
+

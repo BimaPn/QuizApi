@@ -19,3 +19,10 @@ interface AddQuestion {
   answers : Answer[],
   solution : string,
 }
+
+interface QuestionItem {
+  id : string,
+  content : string,
+  answers : Answer[],
+  solution : string,
+}
