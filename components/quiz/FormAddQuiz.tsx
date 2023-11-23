@@ -11,7 +11,7 @@ import Image from "next/image"
 import axios from "axios"
 import { useRouter } from "next/navigation"
 
-const FormAddQuiz = ({children}:{children:React.ReactNode}) => {
+const FormAddQuiz = ({defaultMedia,children}:{defaultMedia?:string,children:React.ReactNode}) => {
   const { 
     formData,setQuestion,
     setMedia,setAnswer,setSolution
@@ -22,7 +22,7 @@ const FormAddQuiz = ({children}:{children:React.ReactNode}) => {
   {children}
   <section className="flex justify-center mt-6">
     <div className="grid grid-cols-2 gap-6">
-      <Media onChange={(file) => setMedia(file)} />
+      <Media onChange={(file) => setMedia(file)} defaultMedia={defaultMedia}/>
       <div className="bg-white w-[484px] flex flex-col gap-6 px-6 pt-5 pb-12 rounded-[17px]">
 
         <div className="flex flex-col gap-1">
@@ -70,9 +70,9 @@ const FormAddQuiz = ({children}:{children:React.ReactNode}) => {
   )
 }
 
-const Media = ({onChange}:{onChange:(file:File)=>void}) => {
+const Media = ({defaultMedia = "/images/empty.jpg" ,onChange}:{defaultMedia?:string,onChange:(file:File)=>void}) => {
   const fileInput = useRef<HTMLInputElement>(null)
-  const [imagePreview,setImagePreview] = useState<string>("/images/empty.jpg");
+  const [imagePreview,setImagePreview] = useState<string>(defaultMedia);
 
     const changeImage = (e:React.ChangeEvent<HTMLInputElement>) => {
       e.preventDefault()

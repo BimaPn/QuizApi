@@ -7,16 +7,17 @@ import { useRouter } from "next/navigation";
 import { useContext } from "react";
 import { MdSave } from "react-icons/md";
 
-const QuestionCreateSubmit = ({quizId}:{quizId:string}) => {
+const QuestionEditSubmit = ({questionId}:{questionId:string}) => {
   const { formData } = useContext(addQuestionContext) as QuestionProvider; 
   const router = useRouter();
 
   const submit = (e:React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/quizzes/${quizId}/question/create`,formData,{
+    axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/quizzes/${questionId}/question/update`,formData,{
       headers: { "Content-Type" : "multipart/form-data" }
       })
     .then(res => {
+      const quizId = res.data.quizId;
       router.push(`/quiz/edit/${quizId}`);      
     })
     .catch(err => {
@@ -34,4 +35,4 @@ const QuestionCreateSubmit = ({quizId}:{quizId:string}) => {
   )
 }
 
-export default QuestionCreateSubmit
+export default QuestionEditSubmit

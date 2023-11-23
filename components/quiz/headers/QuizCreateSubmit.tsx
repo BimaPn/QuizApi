@@ -23,7 +23,7 @@ const QuizCreateSubmit = () => {
     .catch(err => {
       alert("error");
       console.log(err.response)
-      })
+    });
   }
   return (
     <TopBar>
