@@ -13,7 +13,7 @@ const QuestionItemSkeleton = ({count = 1}:{count ?: number}) => {
         </div>
        <div className="grid grid-cols-2 grid-rows-2 gap-8 mt-4">
        {[1,2,3,4].map((item) => (
-        <Skeleton />
+        <Skeleton key={item} />
        ))}
        </div>
       </div>

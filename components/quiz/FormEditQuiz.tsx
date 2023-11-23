@@ -36,7 +36,7 @@ const FormEditQuiz = ({quiz}:{quiz:QuizEdit}) => {
         })
   }
   return (
-    <form onSubmit={submit}>
+    <form onSubmit={submit} className="pb-10">
 
       <Header>
         <ButtonPrimary type="submit" className="w-fit flexCenter gap-1 !pl-2 !pr-3 !py-2 text-sm">
@@ -46,9 +46,9 @@ const FormEditQuiz = ({quiz}:{quiz:QuizEdit}) => {
       </Header> 
 
       <section className="w-[1440px] flex items-start justify-center gap-10 relative mx-auto mt-6">
-        <Questions />
+        <Questions quizId={quiz.id as string} />
 
-        <div className="w-[464px] flex flex-col gap-3 bg-white rounded-[14px] px-6 pt-4 pb-8 sticky top-0">
+        <div className="w-[464px] flex flex-col gap-3 bg-white rounded-[14px] px-6 pt-4 pb-8 sticky top-14">
           <ImageInput
           defaultImage={quiz.media as string}
           onChange={(file) => setFormData({...formData,media:file})}
@@ -102,7 +102,7 @@ const FormEditQuiz = ({quiz}:{quiz:QuizEdit}) => {
 
 const Header = ({children}:{children:React.ReactNode}) => {
   return (
-    <header className="sticky top-0">
+    <header className="sticky top-0 z-[999]">
       <TopBar>
         {children}
       </TopBar>
@@ -110,10 +110,10 @@ const Header = ({children}:{children:React.ReactNode}) => {
   )
 }
 
-const Questions = () => {
+const Questions = ({quizId}:{quizId:string}) => {
   return (
     <div className="flex flex-col justify-start gap-6">
-      <ShowQuestions />
+      <ShowQuestions quizId={quizId} />
       <div>
         <Link href={`/create`} className="w-fit flexCenter bg-blue-300 pl-1 pr-3 py-[7px] rounded-[10px] text-white text-xs mx-auto">
           <MdAdd className="text-lg" />

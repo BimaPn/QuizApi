@@ -87,7 +87,7 @@ const Header = ({formData}:{formData:AddQuestion}) => {
       })
   }
   return (
-  <header className="sticky top-0">
+  <header className="sticky top-0 z-[999]">
     <TopBar>
       <ButtonPrimary onClick={submit} className="w-fit flexCenter gap-1 !pl-2 !pr-3 !py-2 text-sm">
         <MdSave className="text-lg" />
