@@ -9,10 +9,6 @@ const QuizProvider = ({children,slidesValue}:{children:React.ReactNode,slidesVal
   const [countCorrect,setcountCorrect] = useState<number>(0);
   const [streak,setStreak] = useState<number>(0);
 
-  useEffect(() => {
-
-  })
-
   const getScores = () => {
     return Math.floor(countCorrect/slides.length * 100);
   }
@@ -34,14 +30,26 @@ const QuizProvider = ({children,slidesValue}:{children:React.ReactNode,slidesVal
   }
       
   const changeCurrentSlide = () => {
-    setCurrentSlide(prev => prev+1);
+      if(isQuizDone()) return;
+
+      setCurrentSlide(prev => prev+1);
   }
 
   const getProgress = () => {
     return Math.floor(currentSlide/slides.length * 100);
   }
+
+  const resetQuiz = () => {
+    setCurrentSlide(0);
+    setcountCorrect(0);
+    setStreak(0);
+  }
+
+  const isQuizDone = () => {
+    return currentSlide === slides.length;
+  }
   return (
-    <quizContext.Provider value={{slides,currentSlide,changeCurrentSlide,countCorrect,addCorrect,getScores,countWrong,streak,addStreak,resetStreak,getProgress}}>
+    <quizContext.Provider value={{slides,currentSlide,changeCurrentSlide,countCorrect,addCorrect,getScores,countWrong,streak,addStreak,resetStreak,getProgress,resetQuiz,isQuizDone}}>
     {children}
     </quizContext.Provider>
   )

@@ -1,16 +1,33 @@
 "use client"
-import { useContext } from "react"
+import { useState, useEffect } from "react"
 import Image from "next/image"
 import Winner from "../icons/Winner"
 import { MdCancel, MdCheckCircle } from "react-icons/md"
 import { ImFire } from "react-icons/im"
 import Link from "next/link"
 import { quizContext } from "../providers/QuizProvider"
+import axios from "axios"
 
-const Result = ({className}:{className?:string}) => {
-  const { getScores,countCorrect,countWrong,streak } = useContext(quizContext) as QuizProvider;
+const Result = ({quizId,scores,correctAnswers,wrongAnswers,streak,onPlayAgain,className}:QuizResult) => {
+  const [showResult,setShowResult] = useState<boolean>(false);
 
-  return (
+  useEffect(() => {
+    axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/quizzes/${quizId}/attempt/add`,
+    {
+      scores,
+      correct_answers : correctAnswers,
+      wrong_answers : wrongAnswers,
+      streak
+    })
+    .then(() => {
+      setShowResult(true);
+    })
+    .catch((err) => {
+      console.log(err.response);
+    });
+  },[]);
+
+  return showResult && (
     <div className={`w-fit mx-auto flex flex-col gap-6 ${className}`}>
       <div className="flexCenter flex-col gap-1">
         <div className="relative w-[38px] aspect-square rounded-full overflow-hidden">
@@ -31,7 +48,7 @@ const Result = ({className}:{className?:string}) => {
 
     <div className="w-fit mx-auto flexCenter flex-col gap-4">
      <span className="font-bold leading-4">Scores :</span> 
-     <span className="font-bold text-3xl leading-4">{getScores()}</span>
+     <span className="font-bold text-3xl leading-4">{scores}</span>
     </div>
 
     <div className="flex flex-col gap-2 mt-5 mb-7">
@@ -40,14 +57,14 @@ const Result = ({className}:{className?:string}) => {
           <span className="text-sm">Wrong answers</span>
           <div className="flex items-center gap-[6px]">
             <MdCancel className="text-xl text-error"/>
-            <span className="font-bold text-lg">{countWrong()}</span>
+            <span className="font-bold text-lg">{wrongAnswers}</span>
           </div>
         </div>
         <div className="flexCenter flex-col bg-light px-3 py-1 rounded-[12px]">
           <span className="text-sm">Correct answers</span>
           <div className="flex items-center gap-[6px]">
             <MdCheckCircle className="text-xl text-success"/>
-            <span className="font-bold text-lg">{countCorrect}</span>
+            <span className="font-bold text-lg">{correctAnswers}</span>
           </div>
         </div>
         <div className="flexCenter flex-col bg-light px-3 py-1 rounded-[12px]">
@@ -61,7 +78,7 @@ const Result = ({className}:{className?:string}) => {
     </div>
 
     <div className="grid grid-cols-2 gap-3">
-      <Link href={`/play/1`} className="text-center text-white font-bold bg-primary py-[10px] rounded-[12px]">Play again</Link>
+      <button onClick={() => onPlayAgain()} className="text-center text-white font-bold bg-primary py-[10px] rounded-[12px]">Play again</button>
       <Link href={`/home`} className="text-center font-bold bg-light py-[10px] rounded-[12px]">Find another quiz</Link>
     </div>
 

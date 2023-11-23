@@ -13,7 +13,7 @@ interface QuizSlide {
 }
 
 interface SlideAnswer {
-  answer : string,
+  content : string,
   isCorrect : boolean
 }
 
@@ -29,5 +29,17 @@ interface QuizProvider {
   countWrong : () => number,
   getScores : () => number,  
   getProgress : () => number,
+  resetQuiz : () => void,
+  isQuizDone : () => boolean
+}
+
+interface QuizResult {
+  quizId:string,
+  scores:number,
+  correctAnswers:number,
+  wrongAnswers:number,
+  streak:number,
+  onPlayAgain:()=>void,
+  className?:string
 }
 

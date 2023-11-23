@@ -2,7 +2,7 @@ import Skeleton from 'react-loading-skeleton'
 
 const QuizItemSkeleton = ({count=1}:{count?:number}) => {
   return Array(count).fill(0).map((_,index) => (
-    <div className=" rounded-[20px] overflow-hidden bg-white">
+    <div key={index} className=" rounded-[20px] overflow-hidden bg-white">
       <div className='w-full aspect-video relative'>
         <Skeleton className='absolute h-full -top-1 left-0 right-0'/>
       </div>

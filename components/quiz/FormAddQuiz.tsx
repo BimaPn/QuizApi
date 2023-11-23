@@ -8,6 +8,8 @@ import { addQuestionContext } from "../providers/AddQuestionProvider"
 import TopBar from "../TopBar"
 import ButtonPrimary from "../ui/ButtonPrimary"
 import Image from "next/image"
+import axios from "axios"
+import { useRouter } from "next/navigation"
 
 const FormAddQuiz = () => {
   const { 
@@ -69,9 +71,20 @@ const FormAddQuiz = () => {
 }
 
 const Header = ({formData}:{formData:AddQuestion}) => {
+  const router = useRouter();
+
   const submit = (e:React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    console.log(formData);
+    axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/quizzes/create`,formData,{
+      headers: { "Content-Type" : "multipart/form-data" }
+      })
+    .then(res => {
+      router.push(`/quiz/edit/${res.data.quiz_id}`);      
+    })
+    .catch(err => {
+      alert("error");
+      console.log(err.response)
+      })
   }
   return (
   <header className="sticky top-0">
@@ -94,7 +107,6 @@ const Media = ({onChange}:{onChange:(file:File)=>void}) => {
       const selectedFile = fileInput.current!.files![0];
       if (selectedFile) {
           const blob = URL.createObjectURL(selectedFile);
-
           onChange(selectedFile)
           setImagePreview(blob)
       }

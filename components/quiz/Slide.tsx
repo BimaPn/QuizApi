@@ -70,7 +70,7 @@ const Slide = ({question,media,answers,solution,className}:QuizSlide & {classNam
                   {options[index]}.              
                 </div>
                 <div className="flex flex-col justify-start items-start gap-2 border border-transparent">
-                  <span>{answer.answer}</span>
+                  <span>{answer.content}</span>
                   
                   <div className={`text-start flex flex-col expand-container ${(showSolution && answer.isCorrect) ? "expanded" :"shrink-container"} pb-[6px]`}>
                     <span className="font-bold">Solution :</span>    

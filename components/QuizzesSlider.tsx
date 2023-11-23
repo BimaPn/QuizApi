@@ -1,3 +1,4 @@
+import Link from "next/link"
 import QuizItem from "./cards/QuizItem"
 import QuizItemSkeleton from "./skeletons/QuizItemSkeleton"
 
@@ -16,7 +17,9 @@ const QuizzesSlider = ({title,isLoading,quizzes}:{title:string,isLoading:boolean
       {quizzes?.length !== 0 && (
         <>
           {quizzes?.map((item:QuizPreview) => (
-          <QuizItem key={item.id as string } media={item.media} title={item.title} level={item.level}/>
+          <Link key={item.id as string } href={`/quiz/play/${item.id as string}`}>
+            <QuizItem media={item.media} title={item.title} level={item.level}/>
+          </Link>
         ))}
         </>
       )}
