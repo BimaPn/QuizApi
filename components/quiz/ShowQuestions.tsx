@@ -5,21 +5,25 @@ import axios from "axios";
 import QuestionItemSkeleton from "../skeletons/QuestionItemSkeleton";
 
 const ShowQuestions = ({quizId,className}:{quizId:string,className?:string}) => {
-  const [questions,setQuestios] = useState<QuestionItem[]>([]);
+  const [questions,setQuestions] = useState<QuestionItem[]>([]);
   const [isLoading,setIsLoading] = useState<boolean>(true);
 
   useEffect(() => {
     axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/quizzes/${quizId}/questions`)
     .then((res) => {
-      setQuestios(res.data.questions);
+      setQuestions(res.data.questions);
       setIsLoading(false);
-      console.log(res.data.questions)
     })
     .catch((err) => {
       alert("error")
       console.log(err.response.data)
     });
   },[]);
+
+  const deleteQuestion = (questionId:string) => {
+    const filtered = questions.filter((item) => item.id !== questionId);
+    setQuestions(filtered);
+  }
   return (
     <section className={`w-[720px] flex flex-col gap-5 ${className}`}>
     {isLoading && <QuestionItemSkeleton count={3} />}
@@ -32,7 +36,9 @@ const ShowQuestions = ({quizId,className}:{quizId:string,className?:string}) => 
         id={item.id} 
         content={item.content} 
         answers={item.answers} 
-        solution={item.solution}  />
+        solution={item.solution}  
+        onDelete={(questionId) => deleteQuestion(questionId)}/>
+
       ))}
     </section>
   )

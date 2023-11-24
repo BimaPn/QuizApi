@@ -17,7 +17,7 @@ const page = async ({params}:Props) => {
     return res.data.question;
   })
   .catch((err) => {
-    throw Error(err.response.data.message);
+    // throw Error(err.response.data.message);
     console.log(err.response.data);
   });
 

@@ -13,12 +13,17 @@ const QuestionEditSubmit = ({questionId}:{questionId:string}) => {
 
   const submit = (e:React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/quizzes/${questionId}/question/update`,formData,{
-      headers: { "Content-Type" : "multipart/form-data" }
+    const data = {
+      ...formData,
+      _method:"PUT"
+    };
+    axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/questions/${questionId}/update`,data,{
+      headers: { "Content-Type" : "multipart/form-data" },
       })
     .then(res => {
-      const quizId = res.data.quizId;
-      router.push(`/quiz/edit/${quizId}`);      
+      const quizId = res.data.quiz_id;
+      // router.push(`/quiz/edit/${quizId}`);      
+      console.log(res.data)
     })
     .catch(err => {
       alert("error");

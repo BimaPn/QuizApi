@@ -1,18 +1,23 @@
 import { MdCancel, MdCheckCircle, MdOutlineDelete, MdOutlineModeEditOutline } from "react-icons/md"
+import DeleteButton from "./DeleteButton"
+import Link from "next/link"
 
-const QuestionItem = ({id,content,answers,solution,index}:QuestionItem & {index:number}) => {
+const QuestionItem = ({id,content,answers,solution,index,onDelete}
+:QuestionItem & {onDelete:(questionId:string)=>void,index:number}) => {
   return (
       <div className="w-full bg-white rounded-[14px] px-6 pb-4 pt-2">
         
         <div className="flexBetween border-b pb-1">
           <span className="font-bold">Question {index}</span>
           <div className="flexCenter">
-            <div className="flexCenter px-2 py-[3px] rounded-lg">
+            <Link href={`/quiz/question/${id}/edit`} className="flexCenter px-2 py-[3px] rounded-lg">
               <MdOutlineModeEditOutline className="text-xl"/>
-            </div>
-            <div className="flexCenter px-2 aspect-square rounded-lg">
-              <MdOutlineDelete className="text-xl" />
-            </div>
+            </Link>
+            <DeleteButton questionId={id} onDelete={() => onDelete(id)}>
+              <div className="flexCenter px-2 aspect-square rounded-lg">
+                <MdOutlineDelete className="text-xl" />
+              </div>
+            </DeleteButton>
           </div>
         </div>  
 
